@@ -12,5 +12,10 @@ export default {
         token: ''
       }
     }
+  },
+  mutations: {
+    setUser(state, userInfo) {
+      state.profile = userInfo
+    }
   }
 }
