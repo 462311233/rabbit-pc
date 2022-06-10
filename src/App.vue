@@ -1,10 +1,6 @@
 <template>
-  <div class="container">
-    <h2>{{ $store.state.user.profile.account }}</h2>
-    <button @click="$store.commit('user/setUser', { account: '4623' })">
-      set
-    </button>
-  </div>
+  <!-- 一级路由 -->
+  <router-view></router-view>
 </template>
 
 <script>
