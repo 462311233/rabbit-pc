@@ -30,10 +30,8 @@ instance.interceptors.request.use(
 
 //配置响应拦截器
 instance.interceptors.response.use(
-  //响应成功直接取出数据
-  (res) => {
-    res.data
-  },
+  //响应成功直接剥离取出数据
+  (res) => res.data,
   //处理响应错误
   (error) => {
     //401 用户token过期或失效
