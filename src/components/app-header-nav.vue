@@ -10,6 +10,7 @@
       <router-link :to="`/category/${item.id}`" @click="hide(item)">{{
         item.name
       }}</router-link>
+      <!-- 根据open属性判断是否添加类样式 -->
       <div class="layer" :class="{ open: item.open }">
         <ul>
           <li v-for="sub in item.children" :key="sub.id">
@@ -35,6 +36,7 @@ export default {
     const list = computed(() => {
       return store.state.category.list
     })
+    //根据点击元素的id实现商品页面跳转跳转并且隐藏二级菜单
     const show = (item) => {
       store.commit('category/show', item.id)
     }
@@ -68,6 +70,7 @@ export default {
       height: 32px;
       display: inline-block;
     }
+    // &表示当前样式区域的父级元素
     &:hover {
       > a {
         color: @xtxColor;
