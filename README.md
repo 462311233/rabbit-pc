@@ -1,4 +1,4 @@
-# rabbit-pc
+# rabbit-pc/vue3
 
 ## Project setup
 ```
