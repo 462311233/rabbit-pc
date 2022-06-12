@@ -82,7 +82,7 @@
 import { computed, reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 import { findBrand } from '@/api/home.js'
-import XtxSkeleton from '@/components/library/XtxSkeleton.vue'
+import XtxSkeleton from '@/components/library/xtx-skeleton.vue'
 export default {
   components: { XtxSkeleton },
   name: 'HomeCategory',
