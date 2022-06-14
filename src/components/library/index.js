@@ -13,5 +13,40 @@ export default {
     app.component(XtxSkeleton.name, XtxSkeleton)
     app.component(XtxCarousel.name, XtxCarousel)
     app.component(XtxMore.name, XtxMore)
+    //自定义指令
+    defineDirective(app)
   }
+}
+//定义指令
+const defineDirective = (app) => {
+  //图片懒加载
+  // 原理：当图片进入可视区域后再将src地址传给图片dom，
+  // 地址存储在指令的value （v-lazy=“././asd.png”）
+  app.directive('lazy', {
+    //在dom加载好的阶段监听图片 binding是指令的value形参
+    mounted(el, binding) {
+      //创建观察对象 IntersectionObserver 是原生api监测元素进入可视区域
+      const observe = new IntersectionObserver(
+        ([{ isIntersecting }]) => {
+          //判断图片是否进入
+          if (isIntersecting) {
+            //先停止对当前元素观察，避免后续重复观察
+            observe.unobserve(el)
+            //图片加载失败,设置一张默认图片
+            // el.onerror = ()=>{
+            //   el.src = 图片地址
+            // }
+            //将指令的值传给el的src属性
+            el.src = binding.value
+          }
+        },
+        {
+          //threshold设置交叉比例
+          threshold: 0
+        }
+      )
+      //观察实例调用observe方法观察元素
+      observe.observe(el)
+    }
+  })
 }

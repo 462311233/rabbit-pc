@@ -19,7 +19,7 @@
         </RouterLink>
         <ul class="goods-list">
           <li v-for="item in 8" :key="item.id">
-            <HomeGoods :goods="item" />
+            <HomeGoods />
           </li>
         </ul>
       </div>
