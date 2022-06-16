@@ -21,7 +21,14 @@ const routes = [
 ]
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes,
+  //切换路由时页面回到顶部
+  scrollBehavior() {
+    //vue2.0
+    // return { x: 0, y: 0 }
+    //vue3.0
+    return { left: 0, top: 0 }
+  }
 })
 
 export default router
