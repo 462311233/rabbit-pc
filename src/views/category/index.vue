@@ -2,11 +2,14 @@
   <div class="top-category">
     <div class="container">
       <!-- 面包屑 -->
+      <!-- 不同的key可以创建移除元素，创造触发动画条件。 -->
       <XtxBread>
         <XtxBreadItem to="/">首页</XtxBreadItem>
-        <XtxBreadItem to="/category/1005000" v-if="topCategory">{{
-          topCategory.name
-        }}</XtxBreadItem>
+        <transition name="fade-right" mode="out-in"
+          ><XtxBreadItem :key="topCategory.id" v-if="topCategory">{{
+            topCategory.name
+          }}</XtxBreadItem></transition
+        >
       </XtxBread>
       <!-- 轮播图 -->
       <XtxCarousel :sliders="sliders" autoPlay style="height: 500px" />
