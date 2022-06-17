@@ -8,3 +8,11 @@ export const findAllCategory = () => {
 export const findTopCategory = (id) => {
   return request('/category', 'get', { id })
 }
+//获取二级类目的筛选数据
+export const findSubCategoryFilter = (id) => {
+  return request('/category/sub/filter', 'get', { id })
+}
+//获取分类中的商品
+export const findSubCategoryGoods = (params) => {
+  return request('/category/goods/temporary', 'post', params)
+}
