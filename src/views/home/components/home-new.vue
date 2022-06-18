@@ -21,8 +21,7 @@
 import HomePanel from '@/views/home/components/home-panel.vue'
 import HomeSkeleton from './home-skeleton.vue'
 import { ref } from 'vue-demi'
-// import { findNew } from '@/api/home'
-import { data } from '@/data/new.js'
+import { findNew } from '@/api/home'
 export default {
   name: 'HomeNew',
   components: {
@@ -31,10 +30,10 @@ export default {
   },
   setup() {
     //获取商品数据
-    const goods = ref(data.result)
-    // findNew().then((data) => {
-    //   goods.value = data.result
-    // })
+    const goods = ref({})
+    findNew().then((data) => {
+      goods.value = data.result
+    })
     return {
       goods
     }
