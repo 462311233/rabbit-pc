@@ -94,12 +94,20 @@ export default {
       goodsList.value = []
     }
     //点击筛选组件
+    const changeFilter = (filterParams) => {
+      reqParams = { ...reqParams, ...filterParams }
+      reqParams.page = 1
+      goodsList.value = []
+      finished.value = false
+      console.log(1)
+    }
     return {
       finished,
       loading,
       goodsList,
       getData,
-      sortChange
+      sortChange,
+      changeFilter
     }
   }
 }
