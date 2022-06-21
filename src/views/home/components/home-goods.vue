@@ -1,7 +1,19 @@
 <template>
-  <div class="goods-item">
-    <XtxSkeleton width="240px" height="300px" animated></XtxSkeleton>
+  <div class="goods-item" v-if="goods">
+    <RouterLink to="/" class="image">
+      <img :src="goods.picture" alt="" />
+    </RouterLink>
+    <p class="name ellipsis-2">{{ goods.name }}</p>
+    <p class="desc">{{ goods.desc }}</p>
+    <p class="price">&yen;{{ goods.price }}</p>
+    <div class="extra">
+      <RouterLink to="/">
+        <span>找相似</span>
+        <span>发现现多宝贝 &gt;</span>
+      </RouterLink>
+    </div>
   </div>
+  <XtxSkeleton v-else width="240px" height="300px" animated></XtxSkeleton>
 </template>
 
 <script>
@@ -46,6 +58,12 @@ export default {
     &.desc {
       color: #666;
       height: 22px;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
     }
     &.price {
       margin-top: 10px;
