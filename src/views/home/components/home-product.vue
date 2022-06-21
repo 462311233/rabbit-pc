@@ -18,8 +18,8 @@
           </strong>
         </RouterLink>
         <ul class="goods-list">
-          <li v-for="item in 8" :key="item.id">
-            <HomeGoods />
+          <li v-for="item in cate.goods" :key="item.id">
+            <HomeGoods :goods="item" />
           </li>
         </ul>
       </div>
