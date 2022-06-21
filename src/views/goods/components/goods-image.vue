@@ -52,7 +52,6 @@ export default {
     const target = ref(null)
     const { elementX, elementY, isOutside } = useMouseInElement(target)
     watch([elementX, elementY, isOutside], () => {
-      console.log(elementX, elementY, isOutside)
       show.value = !isOutside.value
       //elementXY表示鼠标在元素内位置,根据这个值来设置遮罩的位置
       //记录数据
