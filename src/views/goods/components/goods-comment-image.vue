@@ -1,7 +1,12 @@
 <template>
   <div class="goods-comment-image">
     <div class="list">
-      <a href="javascript:;" v-for="item in pictures" :key="item">
+      <a
+        @mouseenter="show(i)"
+        href="javascript:;"
+        v-for="(item, i) in pictures"
+        :key="item"
+      >
         <img :src="item" alt="" />
       </a>
     </div>
@@ -21,9 +26,12 @@ export default {
       default: () => []
     }
   },
-  setup() {
+  setup(props) {
     const currImage = ref(null)
-    return { currImage }
+    const show = (i) => {
+      currImage.value = props.pictures[i]
+    }
+    return { currImage, show }
   }
 }
 </script>
@@ -48,6 +56,30 @@ export default {
         border-color: @xtxColor;
       }
     }
+  }
+}
+.preview {
+  width: 480px;
+  height: 480px;
+  border: 1px solid #e4e4e4;
+  background: #f8f8f8;
+  margin-bottom: 20px;
+  position: relative;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
   }
 }
 </style>
