@@ -11,10 +11,12 @@
               <i class="iconfont icon-user"></i>{{ profile.account }}
             </a>
           </li>
-          <li><a href="javascript:;">退出登录</a></li>
+          <li><a href="javascript:;" @click="del">退出登录</a></li>
         </template>
         <template v-else>
-          <li><a href="javascript:;">请先登录</a></li>
+          <li>
+            <router-link to="/login">请先登录</router-link>
+          </li>
           <li><a href="javascript:;">免费注册</a></li>
         </template>
 
@@ -32,6 +34,7 @@
 <script>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import Message from './library/Message'
 export default {
   name: 'AppTopnav',
   setup() {
@@ -39,8 +42,15 @@ export default {
     const store = useStore()
     //获取用户信息 加入计算属性为了响应式数据
     const profile = computed(() => store.state.user.profile)
+    const del = () => {
+      store.commit('user/setUser', {})
+      Message({ type: 'warn', text: '已退出登录' })
+      location.hash = '/login'
+    }
+
     return {
-      profile
+      profile,
+      del
     }
   }
 }
